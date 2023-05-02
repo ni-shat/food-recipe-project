@@ -1,17 +1,17 @@
 #show_bg_1 {
     background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.923), rgba(31, 31, 31, 0.5) , rgba(31, 31, 31, 0.5),   rgba(255, 132, 0, 0.5),  rgba(53, 47, 38, 0.923)),
-    url('../../../../assets//carousel/1.jpg');
+    url('../../../../assets/carousel/1.jpg');
 }
 #show_bg_2 {
     background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.923), rgba(31, 31, 31, 0.5) , rgba(31, 31, 31, 0.5),   rgba(255, 132, 0, 0.5),   rgba(53, 47, 38, 0.923)),
-    url('../../../../assets//carousel/2.jpg');
+    url('../../../../assets/carousel/2.jpg');
 }
 #show_bg_3 {
     background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.923), rgba(31, 31, 31, 0.5) , rgba(31, 31, 31, 0.5),   rgba(255, 132, 0, 0.5),   rgba(53, 47, 38, 0.923)),
-    url('../../../../assets//carousel/3.jpg'); 
+    url('../../../../assets/carousel/3.jpg'); 
 }
 
 /* rgba(255, 132, 0, 0.3) 70% 80%,  rgba(255, 132, 0, 0.5)*/
@@ -23,3 +23,4 @@
     color: white;
     padding: 20px;
 }
+

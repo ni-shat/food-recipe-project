@@ -3,6 +3,7 @@ import logo from '../../../assets/logo/3.png';
 import ActiveLink from '../../../components/ActiveLink';
 import Button from '../../../components/Button';
 import check from '../../../assets/loginform-icons/google.svg';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -52,7 +53,7 @@ const Navbar = () => {
                             <img className='w-7' src={check} alt="" />
                             <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
                             <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
-                                <Button className="w-full">Sign in</Button>
+                                <Link to='/auth-layout/login'><Button className="w-full">Sign in</Button></Link>
                             </div>
                         </div>
 

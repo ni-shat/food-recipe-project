@@ -1,10 +1,8 @@
-import Container from "../../../../components/Container";
-
 
 
 const BannerTitle = () => {
     return (
-        <Container>
+        <div className="md:p-4 w-[95%] md:w-[84%] mx-auto text-sm md:text-base">
             <div className="mt-6 md:mt-20  md:space-y-5">
                 <h4 className="text-white text-xl md:text-5xl font-extrabold">Satisfy Your Cravings!</h4> <br className="md:block hidden" />
                 <div className="md:w-[70%] mt-2 leading-3 md:leading-7">
@@ -15,7 +13,7 @@ const BannerTitle = () => {
                 </div>
             </div>
             
-        </Container>
+        </div>
     );
 };
 

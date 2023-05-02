@@ -1,0 +1,11 @@
+#gradient {
+    background-image:
+    linear-gradient(to right, rgba(231, 219, 219, 0.923), rgba(250, 247, 247, 0.7) , rgba(236, 233, 233, 0.7),   rgba(236, 234, 230, 0.923)),
+    url('../../../assets/signup/signupBanner.jpg'); 
+    width: 1000px;
+    height: 700px;
+    
+    background-size: cover;
+    
+    padding: 20px;
+}
