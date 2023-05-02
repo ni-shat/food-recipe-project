@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
-const Button = ({children, bgColor, bgHover}) => {
+const Button = ({children}) => {
     return (
         <button
-            className={`px-5 py-3 text-white duration-150 rounded-lg hover:${bgHover} active:shadow-lg ${bgColor}`}>
+            className={` px-10 py-2 text-white duration-150 rounded-lg bg-[#ED8B1F] hover:bg-slate-200 active:shadow-lg font-bold`}>
             {children}
         </button>
     );

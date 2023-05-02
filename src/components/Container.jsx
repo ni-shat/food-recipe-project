@@ -1,8 +1,8 @@
 
 
-const Container = ({children, bgColor}) => {
+const Container = ({children}) => {
     return (
-        <div className={`container md:p-4 w-[95%] md:w-[80%] mx-auto ${bgColor} text-sm md:text-base`}>
+        <div className={`md:p-4 w-[95%] md:w-[80%] mx-auto text-sm md:text-base`}>
             {children}
         </div>
     );
