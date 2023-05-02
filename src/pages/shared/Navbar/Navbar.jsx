@@ -2,27 +2,9 @@ import { useState } from 'react';
 import logo from '../../../assets/logo/3.png';
 import ActiveLink from '../../../components/ActiveLink';
 import Button from '../../../components/Button';
-import Container from '../../../components/Container';
 import check from '../../../assets/loginform-icons/google.svg';
 
 const Navbar = () => {
-    // return (
-    //     <Container>
-    //         <div className='flex justify-between items-center'>
-    //             <div>
-    //                 <img className='w-40' src={logo} alt="" />
-    //             </div>
-    //             <div className='space-x-6'>
-    //                 <ActiveLink to='/'>Home</ActiveLink>
-    //                 <ActiveLink to='/blog'>Blog</ActiveLink>
-    //             </div>
-    //             <div>
-    //                 <Button>Login</Button>
-    //             </div>
-    //         </div>
-
-    //     </Container>
-
 
     const [open, setOpen] = useState(false);
 
@@ -31,7 +13,7 @@ const Navbar = () => {
             <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 <div className="flex items-center justify-between py-3 md:py-5 md:block">
                     <a href="javascript:void(0)">
-                        <img className='w-40'
+                        <img className='w-24 md:w-40'
                             src={logo}
                             alt="Float UI logo"
                         />
