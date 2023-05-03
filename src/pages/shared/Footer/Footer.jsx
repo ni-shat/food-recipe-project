@@ -135,7 +135,7 @@ const Footer = () => {
                                 </svg>
                             </a>
                         </li>
-
+                        
                         <li className="w-10 h-10 border rounded-full flex items-center justify-center">
                             <a href="javascript:void()">
                                 <svg className="svg-icon w-6 h-6 text-blue-700" viewBox="0 0 20 20">
