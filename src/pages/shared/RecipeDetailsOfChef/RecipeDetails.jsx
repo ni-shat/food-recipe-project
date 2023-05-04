@@ -7,7 +7,7 @@ const RecipeDetails = ({ recipe }) => {
 
     return (
         
-        <div className="flex md:flex-row flex-col justify-between gap-0 mb-10 md:mb-0">
+        <div className="flex md:flex-row flex-col justify-between gap-4 mb-10 md:mb-0">
             <div className="h[550px]">
                 <div className="relative w-[100%] md:w-[500px] md:h-[550px]">
                     <img src={recipe_picture} alt="Your Image Description" className="bg-gradient-to-b from-transparent to-gray-900" />
@@ -22,7 +22,7 @@ const RecipeDetails = ({ recipe }) => {
             </div>
 
            
-            <div className="md:w-[57%] md:h-[550px] w-[100%] flex flex-col gap-4 p-0">
+            <div className=" md:h-[550px] w-[100%] flex flex-col gap-4 p-0">
                 <ul className="text-gray-600 leading-relaxed list list-disc list-inside rounded-md p-5 border h-[60%] overflow-auto bg-slate-50">
                     <h2 className="font-semibold mb-4">Main Ingredients:</h2>
                     {
