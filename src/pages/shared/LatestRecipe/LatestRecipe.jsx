@@ -7,7 +7,7 @@ const LatestRecipe = ({ latest }) => {
 
 
     return (
-        <div className=" rounded-sm mx-auto">
+        <div className=" rounded-sm mx-auto mb-5 md:mb-0">
             <div className="max-w-sm rounded-sm">
                 <article className="pt-0 rounded-sm shadow-md md:h-[520px] border">
 
@@ -29,7 +29,7 @@ const LatestRecipe = ({ latest }) => {
                     </div>
 
                     <div className="flex justify-between relative">
-                        <p className='flex items-center justify-between gap-1 text-gray-600 absolute right-4 bottom-0'>
+                        <p className='flex items-center justify-between gap-1 text-gray-600 absolute right-4 bottom-1 md:bottom-0'>
                             <span>
                                 By
                             </span>

@@ -13,7 +13,7 @@ const LatestRecipes = () => {
     }, []);
 
     return (
-        <div className="text-center mt-32 mb-32">
+        <div className="text-center md:mt-40 mb-14 md:w-[80%] w-[85%] mx-auto md:mb-40 mt-14">
             <p className="text-[#ED8B1F] leading-relaxed ">
             Taste the Latest 
             </p>

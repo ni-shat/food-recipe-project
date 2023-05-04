@@ -8,6 +8,7 @@ import Register from "../pages/Auth/Register/Register";
 import ChefDetails from "../pages/shared/ChefDetails/ChefDetails";
 import ChefDeatilsLayout from "../layout/ChefDetailsLayout/ChefDeatilsLayout";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../pages/shared/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
         loader: ({params}) => fetch(`http://localhost:5000/chef-details/${params.id}`)
       }
     ]
+  },
+  {
+    path: '*',
+    element: <ErrorPage></ErrorPage>
   }
 ]);
 
