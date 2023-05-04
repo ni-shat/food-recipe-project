@@ -17,6 +17,7 @@ const Chefs = () => {
         <div className="md:w-[80%] w-[85%] mx-auto md:mt-32 mt-14">
              <h3 className="text-gray-800 text-xl md:text-4xl font-bold text-center  ">Our chefs</h3>
              <p className="text-[#ED8B1F] text-center md:mb-14 mb-8 md:mt-4 mt-2 font-medium md:text-base text-xs">Meet the talented chefs behind the recipes you love in Our Chefs section.</p>
+             
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-y-20 gap-y-7">
                 {
                     chefs.map(chef => <Chef
