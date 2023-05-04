@@ -2,7 +2,7 @@
 import { FaArrowCircleRight, FaArrowRight, FaRegPlusSquare, FaThumbsUp } from 'react-icons/fa';
 import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
-
+import '../LazyLoaderCSS/Lazyloader.css'
 
 
 const Chef = ({ chef }) => {

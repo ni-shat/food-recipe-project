@@ -1,8 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
-import c from '../../../assets/signup/ch.png'
-import { FaRegPlusSquare, FaThumbsUp } from 'react-icons/fa';
 import RecipeDetails from '../RecipeDetailsOfChef/RecipeDetails';
-import { LazyLoadImage } from "react-lazy-load-image-component";
+
 
 const ChefDetails = () => {
 
@@ -27,15 +25,7 @@ const ChefDetails = () => {
                         <div className='text-gray-600'>{likes}</div>
                     </div>
                 </div>
-
-                {/* <div className='w-2/4'>
-                    <LazyLoadImage src={picture_url}
-                        width={2000} height={400}
-                        alt="Image Alt"
-                    />
-                </div> */}
                 <img className='mx-auto' src={picture_url} alt="" />
-
             </div>
             <div className='md:mt-44 mt-10'>
                 <hr className='w-[80%] mx-auto md:w-full' /> <br />

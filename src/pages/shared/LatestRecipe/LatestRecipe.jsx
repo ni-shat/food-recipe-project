@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazy-load';
 
 const LatestRecipe = ({ latest }) => {
 
@@ -10,10 +11,12 @@ const LatestRecipe = ({ latest }) => {
         <div className=" rounded-sm mx-auto mb-5 md:mb-0">
             <div className="max-w-sm rounded-sm">
                 <article className="pt-0 rounded-sm shadow-md md:h-[520px] border">
+                    <LazyLoad width="100%" height="auto" threshold={0.95}>
+                        <img className="block w-[420px] object-cover h-[310px] text-gray-400 text-sm rounded-sm"
+                            src={recipe_url}
+                        />
+                    </LazyLoad>
 
-                    <img className="block w-[420px] object-cover h-[310px] text-gray-400 text-sm rounded-sm"
-                        src={recipe_url}
-                    />
                     <div className=' h-[200px] '>
                         <div className="p-5 md:-mt-5 -mt-3 pt-8 md:pt-10 flex-1 ">
                             <div className="mt-2">
