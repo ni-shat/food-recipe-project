@@ -5,16 +5,16 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import ggl from '../../../assets/loginform-icons/google.svg';
 import twitter from '../../../assets/loginform-icons/twitter.svg';
 import github from '../../../assets/loginform-icons/github.svg';
+import { Link, useNavigate } from 'react-router-dom';
 
-
-const auth = getAuth();
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
-    console.log(createUser)
-
+    const { createUser, loginWithGoogle, loginWithGithub, update } = useContext(AuthContext);
     const [accepted, setAccepted] = useState(false);
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -25,18 +25,66 @@ const Register = () => {
         const password = form.password.value;
         console.log(name, email, photo, password);
 
+        if (password.length < 6) {
+            setError("Password should be at least 6 characters long.");
+            return;
+        }
+
+        setError('');
+
         createUser(email, password)
             .then((userCredential) => {
                 // Signed in 
-                console.log( userCredential.user);
-                form.reset();
-                // ...
+                console.log(userCredential.user);
+                update_user(userCredential.user, name, photo);
+                // form.reset();
             })
             .catch((error) => {
-                console.log(error)
-                // ..
+                console.log(error);
+                // setError(error.message);
+                // // ..
             });
     }
+
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then((result) => {
+
+                console.log(result.user);
+            }).catch((error) => {
+                console.log(error)
+            });
+    }
+
+    const handleGithubLogin = () => {
+        loginWithGithub()
+            .then((result) => {
+
+                console.log(result.user);
+            }).catch((error) => {
+                console.log(error)
+            });
+    }
+
+    const update_user = (currentUser, name, photo) => {
+        console.log(currentUser);
+        update(currentUser, {
+            displayName: name, photoURL: photo
+        })
+        .then(() => {
+            // Profile updated!
+            console.log(currentUser);
+            navigate('/', { replace: true });
+            // ...
+          }).catch((error) => {
+            console.log(error)
+          });
+
+    }
+
+    // const handleCheckbox = (event) => {
+    //     setAccepted(event.target.checked);
+    // }
 
     return (
         <div className='md:p-4 w-[95%] md:w-[84%] mx-auto'>
@@ -82,18 +130,18 @@ const Register = () => {
                         <div className=''>
                             <div className="mt-5 space-y-2">
                                 <h3 className="text-gray-800 text-2xl font-bold sm:text-3xl text-center md:text-left md:mt-0 mt-10 md:block hidden">Sign up</h3>
-                                <p className="text-center md:text-left">Already have an account? <a href="javascript:void(0)" className="font-medium text-[#ED8B1F] hover:text-slate-300 active:text-slate-300">Log in</a></p>
+                                <p className="text-center md:text-left">Already have an account? <Link to="/auth-layout/login" className="font-medium text-[#ED8B1F] hover:text-slate-300 active:text-slate-300">Log in</Link></p>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-x-3">
-                            <button className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
+                            <button onClick={handleGoogleLogin} className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
                                 <img className='w-5 h-5' src={ggl} alt="" />
                             </button>
                             <button className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
                                 <img className='w-5 h-5' src={twitter} alt="" />
                             </button>
-                            <button className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
+                            <button onClick={handleGithubLogin} className="flex items-center justify-center py-2.5 border rounded-lg hover:bg-gray-50 duration-150 active:bg-gray-100">
                                 <img className='w-5 h-5' src={github} alt="" />
                             </button>
                         </div>
@@ -110,7 +158,7 @@ const Register = () => {
                                     Name
                                 </label>
                                 <input
-                                    type="text"  name='name'
+                                    type="text" name='name'
                                     required
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
@@ -120,7 +168,7 @@ const Register = () => {
                                     Photo URL
                                 </label>
                                 <input
-                                    type="text"  name='photo'
+                                    type="text" name='photo'
                                     required
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
@@ -130,7 +178,7 @@ const Register = () => {
                                     Email
                                 </label>
                                 <input
-                                    type="email"  name='email'
+                                    type="email" name='email'
                                     required
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
@@ -140,7 +188,7 @@ const Register = () => {
                                     Password
                                 </label>
                                 <input
-                                    type="password"  name='password'
+                                    type="password" name='password'
                                     required
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
@@ -151,6 +199,9 @@ const Register = () => {
                                 Create account
                             </button>
                         </form>
+                        <div>
+                            <p className='text-red-600'>{error}</p>
+                        </div>
                     </div>
                     <div className='mt-14 md:hidden block space-y-5 w-[93%] drop-shadow-md rounded-md px-2 py-6 bg-slate-50'>
                         <p className="text-slate-700 text-sm md:text-base font-medium block md:hidden">

@@ -3,12 +3,11 @@ import Main from "../layout/MainLayout/Main";
 import Home from "../pages/home/home/Home";
 import Blogs from "../pages/Blogs/Blogs";
 import AuthLayout from "../layout/LoginRegisterLayout/AuthLayout/AuthLayout";
-import Chefs from "../pages/home/ChefsSection/Chefs/Chefs";
-import PrivateRoute from "./PrivateRoute";
 import Login from "../pages/Auth/Login/Login";
 import Register from "../pages/Auth/Register/Register";
 import ChefDetails from "../pages/shared/ChefDetails/ChefDetails";
 import ChefDeatilsLayout from "../layout/ChefDetailsLayout/ChefDeatilsLayout";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -46,7 +45,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: ':id',
-        element: <ChefDetails></ChefDetails>,
+        element: <PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/chef-details/${params.id}`)
       }
     ]
