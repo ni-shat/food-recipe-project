@@ -1,9 +1,42 @@
 
-
+import jsPDF from 'jspdf';
+import { useState } from 'react';
+import Default from './Default';
 
 const Blogs = () => {
+
+
+    const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
+
+    const handleDownloadPDF = () => {
+        setIsGeneratingPDF(true);
+
+        // Generate PDF using a library like jsPDF
+        const doc = new jsPDF();
+
+        doc.html(<Blogs></Blogs>, {
+            async callback(doc) {
+                // save the document as a PDF with name of pdf_name
+                doc.save("pdf_name");
+            }
+        });
+
+        doc.text('Blog Page', 10, 10);
+        
+        doc.save('my-pdf.pdf');
+
+        setIsGeneratingPDF(false);
+    }
+
     return (
         <div className="text-gray-800 w-[90%] mx-auto mt-16 md:mt-32 md:w-[85%]">
+            <div className='flex justify-center gap-5 mb-20'>
+                
+            <button className='' onClick={handleDownloadPDF} disabled={isGeneratingPDF}>
+                {isGeneratingPDF ? 'Generating PDF...' : 'Download PDF'}
+            </button>
+            </div>
+            
             <div className="mb-32">
                 <p className=" mb-12 text-2xl font-bold sm:text-3xl">
                     Differences between uncontrolled and controlled components:

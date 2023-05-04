@@ -1,15 +1,7 @@
-import { useEffect } from "react";
 import RecipeCategory from "../RecipeCategory/RecipeCategory";
 
 const RecipeCategories = () => {
     
-
-    useEffect(() => {
-        fetch('http://localhost:5000/chefs-details')
-            .then(res => res.json())
-            .then(data => setChefs(data))
-            .catch(error => console.error(error))
-    }, []);
 
     return (
         <div className="text-center mt-32 mb-32">

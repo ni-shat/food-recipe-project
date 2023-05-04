@@ -1,3 +1,4 @@
+import { FaRegHeart } from "react-icons/fa";
 
 const RecipeDetails = ({ recipe }) => {
 
@@ -22,7 +23,7 @@ const RecipeDetails = ({ recipe }) => {
             </div>
 
            
-            <div className=" md:h-[550px] w-[100%] flex flex-col gap-4 p-0">
+            <div className=" md:h-[550px] w-[100%] flex flex-col gap-4 p-0 relative">
                 <ul className="text-gray-600 leading-relaxed list list-disc list-inside rounded-md p-5 border h-[60%] overflow-auto bg-slate-50">
                     <h2 className="font-semibold mb-4">Main Ingredients:</h2>
                     {
@@ -34,6 +35,10 @@ const RecipeDetails = ({ recipe }) => {
                     <p className="text-gray-600 leading-relaxed h-[40%]">
                     {cooking_method}
                     </p>
+                </div>
+                <div className="p-5 flex gap-3 justify-end items-center absolute right-4 top-2">
+                    {rating}+ ratings
+                    <FaRegHeart/>
                 </div>
 
             </div>

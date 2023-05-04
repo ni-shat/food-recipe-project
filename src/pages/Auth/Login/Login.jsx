@@ -29,6 +29,7 @@ const Login = () => {
                 console.log(result.user);
                 // const photoUrl = result.user.photoURL;
                 navigate(from, { replace: true });
+                form.reset();
             })
             .catch((error) => {
                 console.log(error.message);
@@ -41,8 +42,8 @@ const Login = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then((result) => {
-               
                 console.log(result.user);
+                navigate(from, { replace: true });
             }).catch((error) => {
               console.log(error)
             });
@@ -51,7 +52,7 @@ const Login = () => {
     const handleGithubLogin = () => {
         loginWithGithub()
             .then((result) => {
-               
+                navigate(from, { replace: true });
                 console.log(result.user);
             }).catch((error) => {
               console.log(error)

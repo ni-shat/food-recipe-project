@@ -11,7 +11,6 @@ import { Link, useNavigate } from 'react-router-dom';
 const Register = () => {
 
     const { createUser, loginWithGoogle, loginWithGithub, update } = useContext(AuthContext);
-    const [accepted, setAccepted] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -37,7 +36,8 @@ const Register = () => {
                 // Signed in 
                 console.log(userCredential.user);
                 update_user(userCredential.user, name, photo);
-                // form.reset();
+                navigate('/', { replace: true });
+                form.reset();
             })
             .catch((error) => {
                 console.log(error);
@@ -49,7 +49,7 @@ const Register = () => {
     const handleGoogleLogin = () => {
         loginWithGoogle()
             .then((result) => {
-
+                navigate('/', { replace: true });
                 console.log(result.user);
             }).catch((error) => {
                 console.log(error)
@@ -59,7 +59,7 @@ const Register = () => {
     const handleGithubLogin = () => {
         loginWithGithub()
             .then((result) => {
-
+                navigate('/', { replace: true });
                 console.log(result.user);
             }).catch((error) => {
                 console.log(error)

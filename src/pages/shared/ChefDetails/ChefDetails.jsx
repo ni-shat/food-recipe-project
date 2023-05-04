@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import c from '../../../assets/signup/ch.png'
 import { FaRegPlusSquare, FaThumbsUp } from 'react-icons/fa';
 import RecipeDetails from '../RecipeDetailsOfChef/RecipeDetails';
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ChefDetails = () => {
 
@@ -21,26 +22,42 @@ const ChefDetails = () => {
                         <div className='text-gray-600 mt-1 leading-relaxed mb-3'>{description}</div>
                         <div className='text-gray-600 mb-3'>
                             {total_recipes}
-                        </div> 
+                        </div>
                         <div className='text-gray-600 mb-3'>{experience}</div>
                         <div className='text-gray-600'>{likes}</div>
                     </div>
                 </div>
 
+                {/* <div className='w-2/4'>
+                    <LazyLoadImage src={picture_url}
+                        width={2000} height={400}
+                        alt="Image Alt"
+                    />
+                </div> */}
                 <img className='mx-auto' src={picture_url} alt="" />
+
             </div>
             <div className='md:mt-44 mt-10'>
-                <hr className='w-[80%] mx-auto md:w-full'/> <br />
-                <div>
-                    <h3 className="text-base md:text-4xl font-bold text-gray-900 mb-1 md:mb-6 text-center">{name}'s Delicious <span className='text-[#ED8B1F] '>Recipes: </span> </h3>
-                    <p className='text-gray-600 text-sm md:text-base mt-1 leading-relaxed mb-10 md:mb-20 text-center'>Mouthwatering Recipes for Every Occasion!</p>
-                </div>
-                <div>
-                    {
-                        recipes.map(recipe => <RecipeDetails key={id} recipe={recipe}></RecipeDetails>)
-                    }
-                </div>
-                
+                <hr className='w-[80%] mx-auto md:w-full' /> <br />
+                {
+                    recipes ? <>
+                        <div>
+                            <h3 className="text-base md:text-4xl font-bold text-gray-900 mb-1 md:mb-6 text-center">{name}'s Delicious <span className='text-[#ED8B1F] '>Recipes: </span> </h3>
+                            <p className='text-gray-600 text-sm md:text-base mt-1 leading-relaxed mb-10 md:mb-20 text-center'>Mouthwatering Recipes for Every Occasion!</p>
+                        </div>
+                        <div>
+                            {
+
+                                recipes.map(recipe => <RecipeDetails key={id} recipe={recipe}></RecipeDetails>)
+
+                            }
+                        </div>
+                    </>
+                        :
+                        <div></div>
+                }
+
+
             </div>
         </div>
 

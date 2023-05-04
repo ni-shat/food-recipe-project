@@ -16,12 +16,12 @@ const Chef = ({ chef }) => {
         <div className=" rounded-sm">
             <div className="max-w-sm rounded-sm">
                 <article className="pt-0 rounded-sm shadow-md">
-                    <LazyLoad>
-
+                    <LazyLoad height="auto" threshold={0.95}>
                         <img className="block text-gray-400 text-sm rounded-sm"
                             src={picture_url}
                         />
                     </LazyLoad>
+
                     <div className='border'>
                         <div className="p-5 md:-mt-5 -mt-3 pt-8 md:pt-10">
                             <div className="mt-2">
