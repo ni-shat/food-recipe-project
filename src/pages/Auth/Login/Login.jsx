@@ -8,7 +8,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Login = () => {
 
-    const { login, loginWithGoogle, loginWithGithub } = useContext(AuthContext);
+    const { login, loginWithGoogle, loginWithGithub, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -34,10 +34,10 @@ const Login = () => {
             .catch((error) => {
                 console.log(error.message);
                 setError("Email address or password doesn't match.");
+                setLoading(false);
             });
 
     }
-
 
     const handleGoogleLogin = () => {
         loginWithGoogle()
@@ -45,7 +45,8 @@ const Login = () => {
                 console.log(result.user);
                 navigate(from, { replace: true });
             }).catch((error) => {
-              console.log(error)
+              console.log(error);
+              setLoading(false);
             });
     }
 
@@ -55,7 +56,8 @@ const Login = () => {
                 navigate(from, { replace: true });
                 console.log(result.user);
             }).catch((error) => {
-              console.log(error)
+              console.log(error);
+              setLoading(false);
             });
     }
 

@@ -7,8 +7,6 @@ import { FaDownload } from "react-icons/fa";
 const Blogs = () => {
 
 
-    const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
-
     // const generatePDF = () => {
 
     //     html2canvas(document.querySelector("#report")).then(canvas => {
@@ -34,19 +32,20 @@ const Blogs = () => {
     return (
         <div className="text-gray-800 w-[90%] mx-auto mt-16 md:mt-32 md:w-[80%] relative">
             <div className='flex justify-center gap-5 mb-20 absolute right-1 hover:text-slate-300'>
-                <button onClick={generatePDF} disabled={isGeneratingPDF}>
-                    {isGeneratingPDF ? 'Generating PDF...' : <p className='flex items-center'>Download PDF <FaDownload className='inline ml-2' /></p>}
+                <button onClick={generatePDF}>
+                    <span className='hidden md:block'>Download PDF </span>
+                    <FaDownload className='inline ml-2' />
                 </button>
             </div>
 
             {/* blogs */}
-            <div id='report' className='m-10 mb-40 w-[70%] mx-auto text-sm '>
+            <div id='report' className='m-10 mb-40 w-[100%] md:w-[70%] mx-auto text-sm '>
                 <div className='text-center'>
-                    <h3 className='mb-3 text-2xl font-bold sm:text-xl'>React Concepts Simplified</h3>
+                    <h3 className='md:mb-3 mb-1 text-base md:text-2xl font-bold'>React Concepts Simplified</h3>
                     <p className=''>A Comprehensive Q&A</p>
                 </div>
-                <div className="mb-32 mt-32 mr-0">
-                    <p className=" mb-12 text-2xl font-bold sm:text-xl">
+                <div className="mb-14 md:mb-32 mt-20 md:mt-32 mr-0">
+                    <p className="mb-6 md:mb-12 text-base md:text-2xl font-bold">
                         Differences between uncontrolled and controlled components:
                     </p>
                     <p>
@@ -56,8 +55,8 @@ const Blogs = () => {
                         A controlled component, on the other hand, is one where the component's state is managed by React. The state of a controlled component is typically managed using the component's props, and the component's value is updated through callbacks that are triggered by user interactions. This means that when the user interacts with a controlled component, React's virtual DOM is updated, and the new value is passed to the component's parent. Examples of controlled components in React include form inputs that have a value prop, such as the input and textarea elements.
                     </p>
                 </div>
-                <div className="mb-32">
-                    <p className=" mb-12 text-2xl font-bold sm:text-xl">
+                <div className="mb-14 md:mb-32">
+                    <p className="mb-6 md:mb-12 text-base md:text-2xl font-bold">
                         How to validate React props using PropTypes :
                     </p>
                     <p className='mb-5'>
@@ -86,8 +85,8 @@ const Blogs = () => {
                     </p>
 
                 </div>
-                <div className="mb-32 ">
-                    <p className=" mb-12 text-2xl font-bold sm:text-xl">
+                <div className="mb-14 md:mb-32">
+                    <p className="mb-6 md:mb-12 text-base md:text-2xl font-bold">
                         Tell us the difference between nodejs and express js:
                     </p>
                     <p>
@@ -102,8 +101,8 @@ const Blogs = () => {
                         In summary, while Node.js is a runtime environment for executing JavaScript code outside of a web browser, Express.js is a web application framework built on top of Node.js that provides a set of features for building web applications and APIs.
                     </p>
                 </div>
-                <div className="mb-32">
-                    <p className=" mb-12 text-2xl font-bold sm:text-xl">
+                <div className="mb-14 md:mb-32">
+                    <p className="mb-6 md:mb-12 text-base md:text-2xl font-bold">
                         What is a custom hook, and why will you create a custom hook?
                     </p>
                     <p>

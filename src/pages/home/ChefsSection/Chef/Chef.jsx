@@ -8,8 +8,7 @@ import '../LazyLoaderCSS/Lazyloader.css'
 const Chef = ({ chef }) => {
 
     const { id, picture_url, name, experience, total_recipes, likes } = chef;
-    console.log(id, picture_url, name, experience, total_recipes, likes);
-
+    
 
     return (
 

@@ -5,6 +5,8 @@ import ActiveLink from '../../../components/ActiveLink';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import { Tooltip } from 'flowbite-react';
+
 
 const Navbar = () => {
 
@@ -12,6 +14,8 @@ const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
 
     console.log("navbar photoURL", user?.photoURL)
+    console.log("navbar displayName", user?.displayName)
+
 
     console.log("user", user);
 
@@ -64,12 +68,34 @@ const Navbar = () => {
                         <div className='flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-5 md:items-center'>
 
                             {
-                                user && <>
+
+                                user &&
+                                <>
                                     {
-                                        user.photoURL  ? <img className='rounded-full w-9 h-9 object-cover' src={user.photoURL} alt="" />
-                                        : <FaUserCircle className='w-8 h-8 text-gray-500' />
+                                        user.displayName ?
+                                            <>
+                                                <Tooltip
+                                                    content={user.displayName}
+                                                    style="dark"
+                                                    placement="bottom"
+                                                >
+                                                    {
+                                                        user.photoURL ? <img className='rounded-full w-9 h-9 object-cover' src={user.photoURL} alt="" />
+                                                            : <FaUserCircle className='w-8 h-8 text-gray-500' />
+                                                    }
+                                                </Tooltip>
+                                            </>
+
+                                            :
+                                            <>
+                                                {
+                                                    user.photoURL ? <img className='rounded-full w-9 h-9 object-cover' src={user.photoURL} alt="" />
+                                                        : <FaUserCircle className='w-8 h-8 text-gray-500' />
+                                                }
+                                            </>
                                     }
                                 </>
+
                             }
 
                             <span className='hidden w-px h-6 bg-gray-300 md:block'></span>

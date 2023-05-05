@@ -10,8 +10,9 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    const { createUser, loginWithGoogle, loginWithGithub, update } = useContext(AuthContext);
+    const { createUser, loginWithGoogle, loginWithGithub, update, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
     const navigate = useNavigate();
 
 
@@ -22,14 +23,20 @@ const Register = () => {
         const email = form.email.value;
         const photo = form.photo.value;
         const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
         console.log(name, email, photo, password);
+
+        setError('');
+
+        if(password !== confirmPassword){
+            setError("Passwords do not match.");
+            return;
+        }
 
         if (password.length < 6) {
             setError("Password should be at least 6 characters long.");
             return;
         }
-
-        setError('');
 
         createUser(email, password)
             .then((userCredential) => {
@@ -37,12 +44,13 @@ const Register = () => {
                 console.log(userCredential.user);
                 update_user(userCredential.user, name, photo);
                 navigate('/', { replace: true });
+                setSuccess("Your account jas been successfully created!")
                 form.reset();
             })
             .catch((error) => {
                 console.log(error);
-                // setError(error.message);
-                // // ..
+                setError("You may provided an invalid email. Please check again.");
+                setLoading(false);
             });
     }
 
@@ -52,7 +60,8 @@ const Register = () => {
                 navigate('/', { replace: true });
                 console.log(result.user);
             }).catch((error) => {
-                console.log(error)
+                console.log(error);
+                setLoading(false);
             });
     }
 
@@ -62,29 +71,35 @@ const Register = () => {
                 navigate('/', { replace: true });
                 console.log(result.user);
             }).catch((error) => {
+                console.log(error);
+                setLoading(false);
+            });
+    }
+
+    function isImage(url) {
+        return /\.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(url);
+      }
+
+    const update_user = (currentUser, name, photo) => {
+        console.log("in update user", currentUser);
+
+        const isValid = isImage(photo);
+        if(!isValid){
+            photo = "";
+        }
+
+        update(currentUser, {
+            displayName: name, photoURL: photo
+        })
+            .then(() => {
+                // console.log(currentUser);
+                setLoading(false);
+                navigate('/', { replace: true });
+            }).catch((error) => {
                 console.log(error)
             });
     }
 
-    const update_user = (currentUser, name, photo) => {
-        console.log(currentUser);
-        update(currentUser, {
-            displayName: name, photoURL: photo
-        })
-        .then(() => {
-            // Profile updated!
-            console.log(currentUser);
-            navigate('/', { replace: true });
-            // ...
-          }).catch((error) => {
-            console.log(error)
-          });
-
-    }
-
-    // const handleCheckbox = (event) => {
-    //     setAccepted(event.target.checked);
-    // }
 
     return (
         <div className='md:p-4 w-[95%] md:w-[84%] mx-auto'>
@@ -159,7 +174,6 @@ const Register = () => {
                                 </label>
                                 <input
                                     type="text" name='name'
-                                    required
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
                             </div>
@@ -183,16 +197,29 @@ const Register = () => {
                                     className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                                 />
                             </div>
-                            <div>
-                                <label className="font-medium">
-                                    Password
-                                </label>
-                                <input
-                                    type="password" name='password'
-                                    required
-                                    className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-                                />
+                            <div className='flex gap-5 items-center'>
+                                <div className='w-2/4'>
+                                    <label className="font-medium">
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password" name='password'
+                                        required
+                                        className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    />
+                                </div>
+                                <div className='w-2/4'>
+                                    <label className="font-medium">
+                                        Confirm password
+                                    </label>
+                                    <input
+                                        type="password" name='confirmPassword'
+                                        required
+                                        className="w-full mt-2 px-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    />
+                                </div>
                             </div>
+
                             <button
                                 className="w-full px-4 py-2 text-white font-medium bg-[#ED8B1F] hover:bg-slate-300 active:bg-slate-300 rounded-lg duration-150"
                             >

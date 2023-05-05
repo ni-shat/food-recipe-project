@@ -1,5 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import RecipeDetails from '../RecipeDetailsOfChef/RecipeDetails';
+import { FaRegStar, FaRegThumbsUp, FaStar, FaThumbsUp } from 'react-icons/fa';
+
 
 
 const ChefDetails = () => {
@@ -19,10 +21,10 @@ const ChefDetails = () => {
                         <div><h3 className="text-2xl text-gray-900 font-bold mb-6">{name}</h3></div>
                         <div className='text-gray-600 mt-1 leading-relaxed mb-3'>{description}</div>
                         <div className='text-gray-600 mb-3'>
-                            {total_recipes}
+                            {total_recipes} total recipes
                         </div>
-                        <div className='text-gray-600 mb-3'>{experience}</div>
-                        <div className='text-gray-600'>{likes}</div>
+                        <div className='text-gray-600 mb-3'>{experience} experience <FaRegStar className='inline text-[#ED8B1F]'/> </div>
+                        <div className='text-gray-600 flex items-center'><span>{likes} </span> <FaThumbsUp className='ml-2 text-[#ED8B1F]'/> </div>
                     </div>
                 </div>
                 <img className='mx-auto' src={picture_url} alt="" />

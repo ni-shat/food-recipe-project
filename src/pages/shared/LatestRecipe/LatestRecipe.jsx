@@ -11,7 +11,7 @@ const LatestRecipe = ({ latest }) => {
         <div className=" rounded-sm mx-auto mb-5 md:mb-0">
             <div className="max-w-sm rounded-sm">
                 <article className="pt-0 rounded-sm shadow-md md:h-[520px] border">
-                    <LazyLoad width="100%" height="auto" threshold={0.95}>
+                    <LazyLoad width="100%" height="auto" threshold={0.65}>
                         <img className="block w-[420px] object-cover h-[310px] text-gray-400 text-sm rounded-sm"
                             src={recipe_url}
                         />

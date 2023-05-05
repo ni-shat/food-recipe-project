@@ -1,11 +1,36 @@
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import LazyLoad from "react-lazy-load";
 import '../../home/ChefsSection/LazyLoaderCSS/Lazyloader.css';
+import { useState } from "react";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+import toast, { Toaster } from 'react-hot-toast';
+
+// const notify = () => 
+
+
 
 const RecipeDetails = ({ recipe }) => {
 
     const { cooking_method, rating, ingredients, recipe_name, recipe_picture } = recipe;
     console.log(recipe)
+
+    const [saved, setSaved] = useState(true);
+
+    const handleFavBtn = () => {
+        setSaved(!saved);
+        toast.success('Added to favourite!', {
+            style: {
+                border: '1px solid #fffff',
+                padding: '16px',
+                color: '#6e6d6d',
+            },
+            iconTheme: {
+                primary: '#6bbd85',
+                secondary: '#FFFAEE',
+            },
+        });
+    }
 
 
     return (
@@ -13,7 +38,7 @@ const RecipeDetails = ({ recipe }) => {
         <div className="flex md:flex-row flex-col justify-between gap-4 mb-10 md:mb-0">
             <div className="h[550px]">
                 <div className="relative w-[100%] md:w-[500px] md:h-[550px]">
-                    <LazyLoad width="100%" height="100%" threshold={0.95}>
+                    <LazyLoad width="100%" height="100%" threshold={0.20}>
                         <img className="block w-full h-full mx-auto text-gray-400 text-sm rounded-sm"
                             src={recipe_picture}
                         />
@@ -44,9 +69,38 @@ const RecipeDetails = ({ recipe }) => {
                     </p>
                 </div>
 
-                <div className="p-5 flex gap-3 justify-end items-center absolute right-4 top-2">
-                    {rating}+ ratings
-                    <FaRegHeart />
+                <div className="p-5 flex gap-4 justify-end items-center absolute right-4 top-2">
+                    <div className="flex gap-2 items-center">
+                        {rating}+
+                        <Rating
+                            style={{ maxWidth: 100 }}
+                            value={rating}
+                            readOnly
+                        />
+                    </div>
+
+
+                    <div>
+                        {
+                            saved ?
+                                <div>
+                                    <button className="border bg-slate-100 rounded-md flex items-center px-2 py-1 gap-2"> <FaRegHeart onClick={handleFavBtn} className="text-red-600" />
+                                    </button>
+                                    <Toaster
+                                        position="top-right"
+                                        reverseOrder={false}
+                                    />
+                                </div>
+
+                                : <button disabled> <FaHeart className="text-red-600 mt-1.5 mr-2" /></button>
+                                
+
+                        }
+                    </div>
+
+
+
+
                 </div>
 
             </div>
