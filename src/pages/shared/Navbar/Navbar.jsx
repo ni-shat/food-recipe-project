@@ -2,8 +2,6 @@
 import { useContext, useState } from 'react';
 import logo from '../../../assets/logo/3.png';
 import ActiveLink from '../../../components/ActiveLink';
-import Button from '../../../components/Button';
-import check from '../../../assets/loginform-icons/google.svg';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
@@ -65,18 +63,18 @@ const Navbar = () => {
                         <hr />
                         <div className='flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-5 md:items-center'>
 
-
-                            {/* <img className='w-7' src={check} alt="" /> */}
                             {
-                                user &&
-                                // <FaUserCircle style={{ fontsize: '2rem' }} />
-                                <img className='rounded-full w-9 h-9 object-cover' src={user?.photoURL} alt="" />
+                                user && <>
+                                    {
+                                        user.photoURL  ? <img className='rounded-full w-9 h-9 object-cover' src={user.photoURL} alt="" />
+                                        : <FaUserCircle className='w-8 h-8 text-gray-500' />
+                                    }
+                                </>
                             }
 
                             <span className='hidden w-px h-6 bg-gray-300 md:block'></span>
 
                             <div className='space-y-3 items-center gap-x-6 md:flex md:space-y-0'>
-                                {/* <Link to='/auth-layout/login'><Button className="w-full">Sign in</Button></Link> */}
                                 {
                                     user ? <button onClick={handleLogout} className='px-10 py-2 text-white duration-150 rounded-lg bg-[#ED8B1F] hover:bg-slate-200 active:shadow-lg font-bold'>Log out</button>
                                         :
