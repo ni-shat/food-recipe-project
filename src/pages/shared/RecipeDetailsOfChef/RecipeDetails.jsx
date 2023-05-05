@@ -1,5 +1,6 @@
 import { FaRegHeart } from "react-icons/fa";
 import LazyLoad from "react-lazy-load";
+import '../../home/ChefsSection/LazyLoaderCSS/Lazyloader.css';
 
 const RecipeDetails = ({ recipe }) => {
 
